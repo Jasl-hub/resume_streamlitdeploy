@@ -16,7 +16,7 @@ Calling backend logic
 Displaying results
 """
 
-!pip install streamlit
+
 
 from google.colab import drive
 drive.mount('/content/drive')
