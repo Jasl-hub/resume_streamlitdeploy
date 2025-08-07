@@ -1,7 +1,11 @@
 streamlit
-PyPDF2
-sentence-transformers
+transformers
+torch
 scikit-learn
+spacy
+PyPDF2
+docx2txt
+
 
 
 pip install -r requirements.txt
