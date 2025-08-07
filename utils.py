@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/133vyoLUwl_Oq8ikwi4055ABhz8J8_h2B
 """
 
-!pip install PyPDF2
 
 # utils.py
 
