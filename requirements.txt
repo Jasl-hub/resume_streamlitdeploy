@@ -1,0 +1,7 @@
+streamlit
+PyPDF2
+sentence-transformers
+scikit-learn
+
+
+pip install -r requirements.txt
