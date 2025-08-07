@@ -15,16 +15,6 @@ Calling backend logic
 
 Displaying results
 """
-
-
-
-from google.colab import drive
-drive.mount('/content/drive')
-
-!unzip /content/drive/MyDrive/HireAIML.zip -d '/content/HireAIML'
-
-!python -m spacy download en_core_web_lg
-
 # main.py
 
 import streamlit as st
