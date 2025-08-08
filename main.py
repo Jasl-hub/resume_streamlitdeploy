@@ -16,6 +16,9 @@ Calling backend logic
 Displaying results
 """
 # main.py
+import os
+os.environ["TRANSFORMERS_CACHE"] = "/tmp"
+os.environ["HF_HOME"] = "/tmp"
 
 import streamlit as st
 from model import evaluate_hybrid_scores_from_text
