@@ -1,8 +1,8 @@
-streamlit
-transformers
-torch
-scikit-learn
+streamlit==1.31.1
+transformers==4.38.2
+torch==2.2.2
+scikit-learn==1.4.1
+PyPDF2==3.0.1
+docx2txt==0.8
 spacy==3.7.2
 https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1-py3-none-any.whl
-PyPDF2
-docx2txt
