@@ -5,6 +5,5 @@ scikit-learn
 PyPDF2
 docx2txt
 spacy==3.7.2
-
-https://github.com/explosion/spacy/releases/download/v3.7.2/spacy-3.7.2-cp311-cp311-manylinux_2_17_x86_64.whl
+https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1-py3-none-any.whl
 
