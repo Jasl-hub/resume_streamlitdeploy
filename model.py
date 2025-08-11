@@ -78,7 +78,6 @@ Original file is located at
 import os
 import re
 import numpy as np
-import spacy
 import PyPDF2
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -86,12 +85,28 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 from datetime import datetime
 from scipy.stats import spearmanr
+import spacy
+from spacy.cli import download
 
+# Ensure en_core_web_md is available
+try:
+    spacy_lg = spacy.load("en_core_web_md")
+except OSError:
+    download("en_core_web_md")
+    spacy_lg = spacy.load("en_core_web_md")
 
-spacy_lg = spacy.load("en_core_web_md")
-spacy_sm = spacy.load("en_core_web_sm")
+# Ensure en_core_web_sm is available
+try:
+    spacy_sm = spacy.load("en_core_web_sm")
+except OSError:
+    download("en_core_web_sm")
+    spacy_sm = spacy.load("en_core_web_sm")
+
+from transformers import AutoTokenizer, AutoModel
+
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 bert_model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
+
 
 def extract_text_from_pdf(pdf_path):
     text = ""
