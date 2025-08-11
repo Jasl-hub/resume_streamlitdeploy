@@ -9,26 +9,33 @@ import torch
 from datetime import datetime
 from scipy.stats import spearmanr
 import spacy
-from spacy.cli import download
+import subprocess
+import sys
 
-# ✅ Lazy-load spaCy models at runtime
+
+# ✅ Self-contained: load or download spaCy models into a writable folder
 def load_spacy_models():
-    try:
-        spacy_lg = spacy.load("en_core_web_md")
-    except OSError:
-        download("en_core_web_md")
-        spacy_lg = spacy.load("en_core_web_md")
+    model_dir_md = os.path.join(os.getcwd(), "en_core_web_md")
+    model_dir_sm = os.path.join(os.getcwd(), "en_core_web_sm")
 
+    # Large model
+    try:
+        spacy_lg = spacy.load("en_core_web_md")
+    except OSError:
+        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_md", "--direct", "--target", model_dir_md], check=True)
+        spacy_lg = spacy.load(model_dir_md)
+
+    # Small model
     try:
         spacy_sm = spacy.load("en_core_web_sm")
     except OSError:
-        download("en_core_web_sm")
-        spacy_sm = spacy.load("en_core_web_sm")
+        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm", "--direct", "--target", model_dir_sm], check=True)
+        spacy_sm = spacy.load(model_dir_sm)
 
     return spacy_lg, spacy_sm
 
 
-# Hugging Face tokenizer/model can be global (safe to load during build)
+# Hugging Face tokenizer/model — safe to load at import time
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 bert_model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 
