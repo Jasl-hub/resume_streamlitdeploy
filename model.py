@@ -12,27 +12,11 @@ import spacy
 import subprocess
 import sys
 
-
-# ✅ Self-contained: load or download spaCy models into a writable folder
 def load_spacy_models():
-    model_dir_md = os.path.join(os.getcwd(), "en_core_web_md")
-    model_dir_sm = os.path.join(os.getcwd(), "en_core_web_sm")
-
-    # Large model
-    try:
-        spacy_lg = spacy.load("en_core_web_md")
-    except OSError:
-        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_md", "--direct", "--target", model_dir_md], check=True)
-        spacy_lg = spacy.load(model_dir_md)
-
-    # Small model
-    try:
-        spacy_sm = spacy.load("en_core_web_sm")
-    except OSError:
-        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm", "--direct", "--target", model_dir_sm], check=True)
-        spacy_sm = spacy.load(model_dir_sm)
-
+    spacy_lg = spacy.load("en_core_web_md")
+    spacy_sm = spacy.load("en_core_web_sm")
     return spacy_lg, spacy_sm
+
 
 
 # Hugging Face tokenizer/model — safe to load at import time
