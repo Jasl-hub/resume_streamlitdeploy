@@ -54,10 +54,6 @@ def compute_experience_bonus(text):
     return 0.0
 
 
-def get_spacy_embedding(text):
-    spacy_lg, _ = load_spacy_models()
-    return spacy_lg(text).vector
-
 
 def get_bert_embedding(text):
     inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=512)
