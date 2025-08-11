@@ -88,6 +88,8 @@ from scipy.stats import spearmanr
 import spacy
 from spacy.cli import download
 
+# Make sure spaCy installs models into the user site, not system
+os.environ["PIP_USER"] = "1"
 # Ensure en_core_web_md is available
 try:
     spacy_lg = spacy.load("en_core_web_md")
