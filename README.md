@@ -16,7 +16,7 @@ This tool ranks resumes against a given Job Description (JD) using a Hybrid Scor
 
 ## 🏗 Architecture
 
-```mermaid
+```
 flowchart LR
     A[Job Description (PDF/Text)] --> B[Preprocessing & Cleaning]
     B --> C[TF-IDF + SpaCy Embeddings]
