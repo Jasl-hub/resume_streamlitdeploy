@@ -18,14 +18,15 @@ This tool ranks resumes against a given Job Description (JD) using a Hybrid Scor
 
 ```mermaid
 flowchart LR
-    A[📄 Job Description (PDF/Text)] --> B[⚙ Preprocessing & Cleaning]
-    B --> C[🧠 TF-IDF + SpaCy Embeddings]
-    B --> D[🤖 SBERT Embeddings]
-    C --> E[📊 Hybrid Scoring Engine]
+    A[Job Description (PDF/Text)] --> B[Preprocessing & Cleaning]
+    B --> C[TF-IDF + SpaCy Embeddings]
+    B --> D[SBERT Embeddings]
+    C --> E[Hybrid Scoring Engine]
     D --> E
-    E --> F[🏆 Ranked Candidate List]
-    F --> G[🎯 Streamlit Frontend (main.py)]
+    E --> F[Ranked Candidate List]
+    F --> G[Streamlit Frontend (main.py)]
 ```
+
 
 ---
 
