@@ -14,6 +14,11 @@ from scipy.stats import spearmanr
 spacy_lg = spacy.load("en_core_web_md")
 spacy_sm = spacy.load("en_core_web_sm")
 
+
+def get_spacy_embedding(text):
+    """Return the vector representation of text using spaCy's large model."""
+    return spacy_lg(text).vector
+    
 # Load BERT model
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 bert_model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
