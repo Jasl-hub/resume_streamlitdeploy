@@ -6,23 +6,17 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import AutoTokenizer, AutoModel
 import torch
+import spacy
 from datetime import datetime
 from scipy.stats import spearmanr
-import spacy
-import subprocess
-import sys
 
-def load_spacy_models():
-    spacy_lg = spacy.load("en_core_web_md")
-    spacy_sm = spacy.load("en_core_web_sm")
-    return spacy_lg, spacy_sm
+# Load preinstalled spaCy models (installed via requirements.txt)
+spacy_lg = spacy.load("en_core_web_md")
+spacy_sm = spacy.load("en_core_web_sm")
 
-
-
-# Hugging Face tokenizer/model — safe to load at import time
+# Load BERT model
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 bert_model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
-
 
 def extract_text_from_pdf(pdf_path):
     text = ""
